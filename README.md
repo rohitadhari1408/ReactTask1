@@ -6,8 +6,10 @@ A full-stack MERN application that allows users to create, view, and manage prop
 ## 📸 Screenshot
 
 
-
-
+![alt text](<Screenshot 2025-08-02 234436.png>)
+![alt text](<Screenshot 2025-08-02 234346.png>)
+![alt text](<Screenshot 2025-08-02 234402.png>)
+![alt text](<Screenshot 2025-08-02 234450.png>)
 
 ## 📦 Technologies Used
 
