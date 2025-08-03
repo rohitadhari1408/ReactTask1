@@ -4,6 +4,7 @@ import PropertyCard from "../componets/PropertyCard";
 import PropertyForm from "../componets/PropertyForm";
 import PropertyModal from "../componets/PropertyModal";
 import { propertyTypeOptions } from "../utils";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [properties, setProperties] = useState([]);
@@ -12,6 +13,7 @@ const Home = () => {
   const [selected, setSelected] = useState(null);
   const [modalMode, setModalMode] = useState("view");
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const fetchProperties = async () => {
     try {
@@ -50,6 +52,7 @@ const Home = () => {
       });
       setProperties([...properties, res.data]);
       setShowModal(false);
+      navigate('/');
 
     } catch (error) {
       console.error("Error adding property:", error);
@@ -61,11 +64,12 @@ const Home = () => {
     setSelected(null);
   };
 
-  const filtered = properties.filter((p) =>
-    (p.name.toLowerCase().includes(search.toLowerCase()) ||
-      p.location.toLowerCase().includes(search.toLowerCase())) &&
-    (!filter || p.type === filter)
-  );
+const filtered = properties.filter((p) =>
+  ((p.name?.toLowerCase() || "").includes(search.toLowerCase()) ||
+    (p.location?.toLowerCase() || "").includes(search.toLowerCase())) &&
+  (!filter || p.type === filter)
+);
+
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-6">
